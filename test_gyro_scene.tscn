@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://w4xoglp5hges"]
 
-[ext_resource type="Script" uid="uid://draxje1i121h7" path="res://gyroTestCom.gd" id="1_0wtfe"]
+[ext_resource type="Script" uid="uid://draxje1i121h7" path="res://scripts/gyroTestCom.gd" id="1_0wtfe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kh0q7"]
 
@@ -9,3 +9,10 @@
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1809421052]
 mesh = SubResource("BoxMesh_kh0q7")
 script = ExtResource("1_0wtfe")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1472492553]
+transform = Transform3D(1, 0, 0, 0, 0.9211147, 0.38929144, 0, -0.38929144, 0.9211147, 0, 1.9969392, 4.488604)
+fov = 80.66127
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=9745755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0046601295, 0.91576135, 1.5134554)

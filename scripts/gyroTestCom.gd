@@ -1,6 +1,4 @@
-extends MeshInstance3D
-
-
+extends Node3D
 const GYRO_SENSITIVITY = 10.0
 
 func _ready():
