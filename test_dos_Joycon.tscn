@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b02qw1e0evm8b"]
+
+[ext_resource type="Script" uid="uid://c3tqetou0mb8c" path="res://scripts/TwoJoyConTestController.gd" id="1_hpjgv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6pmnr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpjgv"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf156"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="TestDosJoycon" type="Node3D" unique_id=753051538 node_paths=PackedStringArray("blueCube", "redCube")]
+script = ExtResource("1_hpjgv")
+blueCube = NodePath("BlueCube")
+redCube = NodePath("RedCube")
+
+[node name="BlueCube" type="MeshInstance3D" parent="." unique_id=1207287737]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.0819287, 0, 0)
+mesh = SubResource("BoxMesh_6pmnr")
+surface_material_override/0 = SubResource("StandardMaterial3D_hpjgv")
+
+[node name="RedCube" type="MeshInstance3D" parent="." unique_id=555694430]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.2334323, 0, 0)
+mesh = SubResource("BoxMesh_6pmnr")
+surface_material_override/0 = SubResource("StandardMaterial3D_tf156")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=727019217]
+transform = Transform3D(1, 0, 0, 0, 0.9758826, 0.21829593, 0, -0.21829593, 0.9758826, -0.32696033, 1.0261068, 3.4601166)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=853173355]

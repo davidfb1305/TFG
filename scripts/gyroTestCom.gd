@@ -10,7 +10,7 @@ func _ready():
 		return
 
 	# We must enable the motion sensors before using them.
-	Input.set_joy_motion_sensors_enabled(0, true)
+	Input.set_joy_motion_sensors_enabled(0,true)
 
 	# (Tell the users here that they need to put their joypads on a flat surface and wait for confirmation.)
 
