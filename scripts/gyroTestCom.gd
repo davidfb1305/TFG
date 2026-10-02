@@ -1,5 +1,6 @@
 extends Node3D
-const GYRO_SENSITIVITY = 10.0
+const GYRO_SENSITIVITY = 1.0
+const MIN_GYRO_PERMITTED = 0.6;
 
 func _ready():
 	# In this example we only use the first connected joypad (id 0).
@@ -33,7 +34,16 @@ func calibrate_motion():
 
 func move_object(delta):
 	var node: Node3D = self
-
 	var gyro := Input.get_joy_gyroscope(0)
-	node.rotation.x -= -gyro.y * GYRO_SENSITIVITY * delta  # Use rotation around the Y axis (yaw) here.
-	node.rotation.y += -gyro.x * GYRO_SENSITIVITY * delta  # Use rotation around the X axis (pitch) here.
+
+	# Inclinación vertical (Pitch - Eje X)
+	if abs(gyro.x) > MIN_GYRO_PERMITTED:
+		# Cambia a '-=' si la rotación vertical sigue invertida
+		node.rotation.x -= gyro.x * GYRO_SENSITIVITY * delta  
+
+	# Giro horizontal (Yaw - Eje Y)
+	if abs(gyro.y) > MIN_GYRO_PERMITTED:
+		# Cambia a '+=' si la rotación horizontal se invierte
+		node.rotation.y -= gyro.y * GYRO_SENSITIVITY * delta
+	
+
