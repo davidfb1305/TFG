@@ -46,4 +46,3 @@ func move_object(delta):
 		# Cambia a '+=' si la rotación horizontal se invierte
 		node.rotation.y -= gyro.y * GYRO_SENSITIVITY * delta
 	
-

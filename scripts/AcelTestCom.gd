@@ -1,52 +1,46 @@
 extends Node3D
-var detect_accelerometer = true
-@export var speed : float = 2
-# Change to make the game detect movement at different thresholds.
-# With a lower value, smaller movements will be detected, and with a
-# larger value, only big movements will be detected.
-const THRESHOLD = 10.0
 
-func _ready():
-	# In this example, we only use the first connected joypad (ID 0).
-	if 0 not in Input.get_connected_joypads():
+@export var sensitivity: float = 1.0
+
+@export_group("Márgenes de la Cámara")
+@export var min_bounds: Vector3 = Vector3(-5.0, -3.0, 0.0)
+@export var max_bounds: Vector3 = Vector3(5.0, 3.0, 0.0)
+
+const JOYPAD_ID = 0
+var initial_position: Vector3
+
+func _ready() -> void:
+	initial_position = position
+
+	if JOYPAD_ID not in Input.get_connected_joypads():
+		print("Aviso: No hay ningún mando conectado.")
 		return
 
-	if not Input.has_joy_motion_sensors(0):
+	if not Input.has_joy_motion_sensors(JOYPAD_ID):
+		print("Aviso: El mando no cuenta con sensores de movimiento.")
 		return
 
-	# We must enable the motion sensors before using them.
-	Input.set_joy_motion_sensors_enabled(0, true)
+	Input.set_joy_motion_sensors_enabled(JOYPAD_ID, true)
 
-func _process(delta):
-	if Input.has_joy_motion_sensors(0):
-		accelerometer_example()
-
-func accelerometer_example():
-	if not detect_accelerometer:
+func _process(delta: float) -> void:
+	
+	if Input.is_joy_button_pressed(JOYPAD_ID, JOY_BUTTON_A):
+		position = initial_position
 		return
 
-	var acceleration = Input.get_joy_accelerometer(0) - Input.get_joy_gravity(0)
-	if acceleration.length() > THRESHOLD:
-		if acceleration.x > THRESHOLD:
-			print("Moved left")
-			position.x -=speed*get_process_delta_time()
-		elif acceleration.x < -THRESHOLD:
-			print("Moved right")
-			position.x +=speed*get_process_delta_time()
-		if acceleration.y < -THRESHOLD:
-			print("Moved up")
-			position.y +=speed*get_process_delta_time()
-		elif acceleration.y > THRESHOLD:
-			print("Moved down")
-			position.y -=speed *get_process_delta_time()
-		if acceleration.z < -THRESHOLD:
-			print("Moved closer to the player")
-		elif acceleration.z > THRESHOLD:
-			print("Moved away from the player")
+	if not Input.has_joy_motion_sensors(JOYPAD_ID):
+		return
 
-		# After detecting movement in one direction, the accelerometer sensor
-		# will briefly report movement in the opposite direction, even though the controller only moved once.
-		# So we need to ignore these reported values for a short amount of time.
-		detect_accelerometer = false
-		await get_tree().create_timer(0.1, false).timeout
-		detect_accelerometer = true
+	var acceleration = Input.get_joy_accelerometer(JOYPAD_ID) - Input.get_joy_gravity(JOYPAD_ID)
+
+	var deadzone = 0.5
+	if abs(acceleration.x) < deadzone: acceleration.x = 0.0
+	if abs(acceleration.y) < deadzone: acceleration.y = 0.0
+
+	var direction = Vector3(acceleration.x, -acceleration.y, 0.0)
+
+	position += direction * sensitivity * delta
+
+	position.x = clamp(position.x, min_bounds.x, max_bounds.x)
+	position.y = clamp(position.y, min_bounds.y, max_bounds.y)
+	position.z = clamp(position.z, min_bounds.z, max_bounds.z)
