@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cpsnhbv8qsnuv"
+path="res://.godot/imported/stall-stool.obj-c7d0879a86c9e925d4778ecae1712acb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/stall-stool.obj-c7d0879a86c9e925d4778ecae1712acb.mesh"]
+
+source_file="res://assets/Buildings/kenney_fantasy-town-kit_2.0/Models/OBJ format/stall-stool.obj"
+dest_files=["res://.godot/imported/stall-stool.obj-c7d0879a86c9e925d4778ecae1712acb.mesh", "res://.godot/imported/stall-stool.obj-c7d0879a86c9e925d4778ecae1712acb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
