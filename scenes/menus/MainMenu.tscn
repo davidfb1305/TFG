@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b5nyk6x3afmm2"]
+
+[ext_resource type="Texture2D" uid="uid://bopg0yk7k4oyk" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Round/RoundButton2_white.png" id="1_bqojv"]
+[ext_resource type="Texture2D" uid="uid://c0kmn4s7kfy4r" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Square/SquareButton2_red.png" id="2_ldf1p"]
+[ext_resource type="Texture2D" uid="uid://pkcm33lm8sp4" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Round/RoundButton2_wood.png" id="3_ldf1p"]
+[ext_resource type="Texture2D" uid="uid://dqs6owujhvfnf" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Checkboxes/Checkbox2_checked.png" id="4_tyyoy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kh0q7"]
+texture = ExtResource("1_bqojv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pe5hr"]
+texture = ExtResource("3_ldf1p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4lefe"]
+texture = ExtResource("4_tyyoy")
+
+[node name="MainMenu" type="Node2D" unique_id=1560565049]
+
+[node name="Menu" type="Control" parent="." unique_id=795891112]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 646.0
+
+[node name="NoPlay" type="Button" parent="Menu" unique_id=217890547]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 119.0
+offset_right = 83.5
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_kh0q7")
+text = "Ejercicios"
+
+[node name="Play" type="Button" parent="Menu" unique_id=666237094]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 336.0
+offset_right = 83.5
+offset_bottom = 408.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_kh0q7")
+text = "Jugar"
+
+[node name="Title" type="TextureRect" parent="Menu" unique_id=1486751588]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 120.0
+offset_right = 189.0
+offset_bottom = 280.0
+grow_horizontal = 2
+texture = ExtResource("2_ldf1p")
+
+[node name="Label" type="Label" parent="Menu/Title" unique_id=1692598954]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 158.0
+text = "JUEGO NOMBRE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameField" type="TextEdit" parent="Menu" unique_id=40736267]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 560.0
+offset_right = 212.0
+offset_bottom = 626.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_pe5hr")
+text = "PacienteNombre"
+placeholder_text = "Paciente A"
+
+[node name="ConfirmName" type="Button" parent="Menu" unique_id=1768747481]
+layout_mode = 0
+offset_left = 222.99998
+offset_top = 563.99994
+offset_right = 266.0
+offset_bottom = 605.99994
+scale = Vector2(1.355, 1.355)
+theme_override_styles/normal = SubResource("StyleBoxTexture_4lefe")
