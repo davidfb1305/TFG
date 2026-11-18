@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c0kmn4s7kfy4r" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Square/SquareButton2_red.png" id="2_ldf1p"]
 [ext_resource type="Texture2D" uid="uid://pkcm33lm8sp4" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Round/RoundButton2_wood.png" id="3_ldf1p"]
 [ext_resource type="Texture2D" uid="uid://dqs6owujhvfnf" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Checkboxes/Checkbox2_checked.png" id="4_tyyoy"]
+[ext_resource type="Texture2D" uid="uid://cx37jfjodkpfs" path="res://assets/UI/DEMO_Cozy_UI_Pack_doboui/Buttons/Round/RoundButton1_white.png" id="5_p0il0"]
+[ext_resource type="Script" uid="uid://bhglhb0yblcf" path="res://scripts/gyroMenuControl.gd" id="6_cty7a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kh0q7"]
 texture = ExtResource("1_bqojv")
@@ -21,6 +23,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1154.0
 offset_bottom = 646.0
+scale = Vector2(1.67, 1.67)
 
 [node name="NoPlay" type="Button" parent="Menu" unique_id=217890547]
 layout_mode = 1
@@ -91,3 +94,15 @@ offset_right = 266.0
 offset_bottom = 605.99994
 scale = Vector2(1.355, 1.355)
 theme_override_styles/normal = SubResource("StyleBoxTexture_4lefe")
+
+[node name="cursor" type="TextureRect" parent="Menu" unique_id=1229870597]
+layout_mode = 0
+offset_left = 550.89813
+offset_top = 277.24548
+offset_right = 695.89813
+offset_bottom = 442.24548
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("5_p0il0")
+script = ExtResource("6_cty7a")
+GYRO_SENSITIVITY = 500.0
+MIN_GYRO_PERMITTED = 0.5
